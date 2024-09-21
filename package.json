@@ -1,0 +1,32 @@
+{
+    "name": "monolith",
+    "private": true,
+    "version": "1.0.0",
+    "scripts": {
+        "build": "turbo build",
+        "dev": "turbo dev --filter=frontend --filter=@repo/ui",
+        "lint": "turbo lint",
+        "dev:fe": "turbo run dev --filter=frontend",
+        "dev:ui": "turbo run dev --filter=ui",
+        "dev:be": "node ./setup-symlink.js && docker compose up",
+        "build:fe": "turbo run build --filter=frontend",
+        "build:be": "turbo run build --filter=backend",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    },
+    "devDependencies": {
+        "prettier": "^3.2.5",
+        "turbo": "^2.1.1",
+        "typescript": "^5.4.5"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "packageManager": "yarn@1.22.21",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "dependencies": {
+        "autoprefixer": "^10.4.20"
+    }
+}
